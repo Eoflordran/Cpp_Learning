@@ -39,3 +39,15 @@ class Player : public Entity
 
         std::string GetName() override { return m_Name; }
 };
+
+class Date 
+{
+    int d, m, y;
+    public:
+        explicit Date(int dd = 0, int mm = 0, int yy = 0);
+
+        void Print()
+        {
+            std::cout << "Day: " << d << "Month: " << d << "Year: " << y << std::endl;
+        }
+};

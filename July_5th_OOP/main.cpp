@@ -57,6 +57,11 @@ int main()
    FunctionA(i);
    std::cout << i << std::endl;
    
+   Date d1{15,6,2020};
+   d1.Print();
+
+   Date d2 = Date{16,};
+   d2.Print();
 
 }
 /*                  END OF MAIN                  */ 
