@@ -1,4 +1,15 @@
 #include<iostream>
+template<typename T>
+T yeetFunc()
+{
+
+}
+
+template<>
+void yeetFunc()
+{
+    
+}
 
 template<typename T>
 void Print(T value)
