@@ -1,5 +1,7 @@
 #include"Structural.hpp"
 
+
+/*************** Adapter example ***************/
 void ITarget::MethodA()
 {
     std::cout << "incompatible method\n";
@@ -33,3 +35,40 @@ void Client::MakeRequest()
     //_target->MethodA();
     sharedTarget->MethodA();
 }
+
+/*************** Adapter example ***************/
+
+
+/*************** Bridge example ***************/
+void ImplementationBase::OperationImplementation()
+{
+    // nothing, this is a pseudo interface   
+}
+
+void ConcreteImplementation1::OperationImplementation()
+{
+    std::cout << "Concrete implemenation #1\n";
+}
+
+void ConcreteImplementation2::OperationImplementation()
+{
+    std::cout << "Concrete implemenation #2\n";
+}
+
+Abstraction::Abstraction(std::shared_ptr<ImplementationBase> X)
+{
+    implementer = X;
+}
+
+void Abstraction::Operation()
+{
+    std::cout << "ImplementationBase:Operation\n";
+    implementer->OperationImplementation();
+}
+
+void RefinedAbstraction::Operation()
+{
+    std::cout << "Refined Abstraction, ImplentationBase::Operation\n";
+    implementer->OperationImplementation();
+}
+/*************** Bridge example ***************/

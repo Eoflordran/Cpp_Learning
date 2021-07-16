@@ -3,7 +3,7 @@
 #include<iostream>
 
 
-/*************** adapter design pattern ***************/
+/*************** Adapter design pattern ***************/
 /* The adapter pattern is used to provide a link between two otherwise
 incompatible types by wrapping the "adaptee" with a class that supports
 the interface required by the client*/
@@ -39,11 +39,49 @@ class Client
         void MakeRequest();
         
 };
-/*************** adapter design pattern ***************/
+/*************** Adapter design pattern ***************/
 
 /*************** Bridge design pattern ***************/
 /* The bridge pattern is used to separate the abstract elements
 of a class from the implementation details, providing the means to replace
 the implementation details without modifying the abstraction*/
 
+class ImplementationBase
+{
+    public:
+        virtual void OperationImplementation();
+};
+
+class ConcreteImplementation1 : public ImplementationBase
+{
+    public:
+        void OperationImplementation() override;
+};
+
+class ConcreteImplementation2 : public ImplementationBase
+{
+    public:
+        void OperationImplementation() override;
+};
+
+class Abstraction
+{
+    public:
+        std::shared_ptr<ImplementationBase> implementer;
+        Abstraction(){};
+        Abstraction(std::shared_ptr<ImplementationBase> X);
+        virtual void Operation();
+};
+
+class RefinedAbstraction : public Abstraction
+{
+    public:
+        using Abstraction::Abstraction;
+        /*
+        RefinedAbstraction(std::shared_ptr<ImplementationBase> X) 
+        { // this only works if a default constructor is defined in Abstraction
+            implementer = X;
+        }*/
+        void Operation() override;
+};
 /*************** Bridge design pattern ***************/
