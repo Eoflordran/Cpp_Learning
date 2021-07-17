@@ -1,5 +1,6 @@
 #include<iostream>
 #include<memory>
+#include<vector>
 
 #include"PatternExamples.hpp"
 
@@ -7,7 +8,8 @@
 int main()
 {
     //adapterExample();
-    bridgeExample();
+    //bridgeExample();
+    compositeExample();
 }
 
 

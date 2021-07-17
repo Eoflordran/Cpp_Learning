@@ -42,3 +42,9 @@ void bridgeExample()
     RA2->Operation();
 
 }
+
+void compositeExample()
+{
+    std::cout << "hello from the composite example!\n";
+    
+}

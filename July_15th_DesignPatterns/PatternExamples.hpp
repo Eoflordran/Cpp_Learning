@@ -15,3 +15,4 @@
 
 void adapterExample();
 void bridgeExample();
+void compositeExample();

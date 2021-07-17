@@ -72,3 +72,28 @@ void RefinedAbstraction::Operation()
     implementer->OperationImplementation();
 }
 /*************** Bridge example ***************/
+
+
+
+/*************** Composite example ***************/
+
+
+void Composite::AddChild(std::shared_ptr<Component> child)
+{
+    m_children.push_back(child);
+}
+
+std::shared_ptr<Component> Composite::GetChild(int index)
+{
+    return m_children[index];
+}
+
+void Composite::RemoveChild(std::shared_ptr<Component> child)
+{
+    m_children.pop
+}
+
+void Leaf::Operation()
+{
+    std::cout << "Leaf.";
+}

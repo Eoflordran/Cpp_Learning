@@ -1,7 +1,7 @@
 
 #include<memory>
 #include<iostream>
-
+#include<vector>
 
 /*************** Adapter design pattern ***************/
 /* The adapter pattern is used to provide a link between two otherwise
@@ -85,3 +85,29 @@ class RefinedAbstraction : public Abstraction
         void Operation() override;
 };
 /*************** Bridge design pattern ***************/
+
+/*************** Composite design pattern ***************/
+
+class Component
+{
+    public:
+        virtual void Operation();
+};
+
+class Composite : public Component
+{
+    std::vector<std::shared_ptr<Component>> m_children;
+    
+    public:
+        void AddChild(std::shared_ptr<Component> child);
+        void RemoveChild(std::shared_ptr<Component> child);
+        std::shared_ptr<Component> GetChild(int index);
+        void Operation() override;
+
+};
+
+class Leaf : public Component
+{
+    public:
+        void Operation() override;
+};
