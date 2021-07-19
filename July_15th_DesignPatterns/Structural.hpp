@@ -2,7 +2,10 @@
 #include<memory>
 #include<iostream>
 #include<vector>
-
+#include<map>
+#include<string>
+#include<list>
+#include<iterator>
 /*************** Adapter design pattern ***************/
 /* The adapter pattern is used to provide a link between two otherwise
 incompatible types by wrapping the "adaptee" with a class that supports
@@ -88,17 +91,31 @@ class RefinedAbstraction : public Abstraction
 
 /*************** Composite design pattern ***************/
 
+
 class Component
 {
+    protected:
+        std::string m_Name;
     public:
-        virtual void Operation();
+    /*if a virtual function isn't defined you'll get
+    undefined reference to vtable, either has to be a 
+    pure interface or it has to have empty definitions.
+    They cannot just be prototypes.*/
+
+        Component(std::string x);
+        ~Component(){};
+        virtual void Operation(){};
+        std::string getName();
 };
 
 class Composite : public Component
 {
-    std::vector<std::shared_ptr<Component>> m_children;
+    //std::vector<std::shared_ptr<Component>> m_children;
+    //std::map<std::shared_ptr<Component>, std::string> m_children;
     
+    std::list<std::shared_ptr<Component>> m_children;
     public:
+    using Component::Component;
         void AddChild(std::shared_ptr<Component> child);
         void RemoveChild(std::shared_ptr<Component> child);
         std::shared_ptr<Component> GetChild(int index);
@@ -109,5 +126,6 @@ class Composite : public Component
 class Leaf : public Component
 {
     public:
+        using Component::Component;
         void Operation() override;
 };

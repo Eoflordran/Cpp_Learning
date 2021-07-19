@@ -43,8 +43,34 @@ void bridgeExample()
 
 }
 
+
 void compositeExample()
 {
-    std::cout << "hello from the composite example!\n";
+    std::shared_ptr<Composite> bob(new Composite("bob"));
     
+    std::shared_ptr<Composite> steve(new Composite("steve"));
+    std::shared_ptr<Composite> jake(new Composite("jake"));
+    std::shared_ptr<Composite> andy(new Composite("andy"));
+    bob->AddChild(steve);
+    bob->AddChild(jake);
+    bob->AddChild(andy);
+    std::cout << bob->GetChild(0)->getName() << std::endl;
+    bob->Operation();
+
+    std::cout << "adding subordinates to steve...\n";
+    std::shared_ptr<Leaf> geoff(new Leaf("geoff"));
+    std::shared_ptr<Leaf> george(new Leaf("george"));
+    std::shared_ptr<Leaf> jer(new Leaf("jer"));
+    std::shared_ptr<Leaf> gem(new Leaf("gem"));
+
+    steve->AddChild(geoff);
+    steve->AddChild(george);
+    steve->AddChild(jer);
+    steve->AddChild(gem);
+
+    bob->RemoveChild(steve);
+    std::cout << bob->GetChild(0)->getName() << std::endl;
+    steve->Operation();
+
+    bob->Operation();
 }

@@ -77,21 +77,52 @@ void RefinedAbstraction::Operation()
 
 /*************** Composite example ***************/
 
+Component::Component(std::string x)
+{
+    m_Name = x;
+}
+
+std::string Component::getName()
+{
+    return m_Name;
+}
 
 void Composite::AddChild(std::shared_ptr<Component> child)
 {
+    //m_children.push_back(child);// a hashmap is better than a vector here
     m_children.push_back(child);
 }
 
+
 std::shared_ptr<Component> Composite::GetChild(int index)
 {
-    return m_children[index];
+    std::shared_ptr<Component> x;
+    auto it = m_children.begin();
+
+    while(it != m_children.end())
+    {
+        if(index == 0)
+        {
+            return *it;
+        }
+        std::advance(it,1);
+        index--;
+    }
+    return x; /* this is an error, should look into how to return an error */
+    //return m_children[index];
 }
 
 void Composite::RemoveChild(std::shared_ptr<Component> child)
 {
-    m_children.pop
+    m_children.remove(child);
 }
+
+void Composite::Operation()
+{
+    std::cout << "Composite with " << m_children.size() << " children\n";
+}
+
+
 
 void Leaf::Operation()
 {
