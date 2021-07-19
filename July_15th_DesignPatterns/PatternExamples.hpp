@@ -16,3 +16,4 @@
 void adapterExample();
 void bridgeExample();
 void compositeExample();
+void decoratorExample();

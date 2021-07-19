@@ -9,7 +9,8 @@ int main()
 {
     //adapterExample();
     //bridgeExample();
-    compositeExample();
+    //compositeExample();
+    //decoratorExample();
 }
 
 

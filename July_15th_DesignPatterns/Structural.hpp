@@ -129,3 +129,39 @@ class Leaf : public Component
         using Component::Component;
         void Operation() override;
 };
+/*************** Composite design pattern ***************/
+
+
+
+/*************** Decorator design pattern ***************/
+class ComponentBase
+{
+    public:
+        ComponentBase(){};
+        virtual void Operation(){};
+};
+
+class ConcreteComponent : ComponentBase
+{
+    public:
+        void Operation() override;
+};
+
+class DecoratorBase : ComponentBase
+{
+    protected:
+        ComponentBase m_component;
+    public:
+        DecoratorBase(ComponentBase x) : m_component(x) {};
+        void Operation() override;
+};
+
+class ConcreteDecorator : DecoratorBase
+{
+    public:
+        using DecoratorBase::DecoratorBase;
+        void Operation() override;
+};
+
+
+/*************** Decorator design pattern ***************/

@@ -74,3 +74,17 @@ void compositeExample()
 
     bob->Operation();
 }
+
+void decoratorExample()
+{
+    std::cout << "hello from decorator example!\n";
+
+    /* Not much to say about this one, decorator objects can
+    be used to act as/alter the fucntionality of an existing
+    objet, by wrapping themselves around an object; being able
+    to override all of the other object's methods. For instance
+    if there was an object that handled how to communicate on a
+    particular kind of socket, this method could be used to wrap
+    that class and send the same kind of information on a different
+    kind of socket or protocol*/
+}
