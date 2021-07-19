@@ -128,3 +128,20 @@ void Leaf::Operation()
 {
     std::cout << "Leaf.";
 }
+
+/*************** Decorator example ***************/
+
+void ConcreteComponent::Operation()
+{
+    std::cout<< "Component Operation\n";
+}
+void DecoratorBase::Operation()
+{
+    m_component.Operation();
+}
+
+void ConcreteDecorator::Operation()
+{
+    m_component.Operation();
+    std::cout << "modified\n";
+}

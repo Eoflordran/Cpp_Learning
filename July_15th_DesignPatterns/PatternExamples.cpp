@@ -88,3 +88,15 @@ void decoratorExample()
     that class and send the same kind of information on a different
     kind of socket or protocol*/
 }
+
+void facadeExample()
+{
+    /* more or less self explainatory, this is a design pattern that
+    allows for simple access of complex classes. The most trivial example
+    is accessing a data base, where the user wants to know high level info
+    about the existing stock. 
+    Another trivial example is socket programming, the sockets provide us the
+    facade interface to send and recieve messages where we don't have to concern
+    ourselves with the bits, and error correction that is going on behind the scenes 
+    */
+}

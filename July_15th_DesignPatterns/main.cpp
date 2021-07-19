@@ -11,6 +11,7 @@ int main()
     //bridgeExample();
     //compositeExample();
     //decoratorExample();
+    //facadeExample();
 }
 
 
