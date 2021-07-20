@@ -6,6 +6,9 @@
 #include<string>
 #include<list>
 #include<iterator>
+
+#ifndef STRUCTURAL_H
+#define STRUCTURAL_H
 /*************** Adapter design pattern ***************/
 /* The adapter pattern is used to provide a link between two otherwise
 incompatible types by wrapping the "adaptee" with a class that supports
@@ -165,3 +168,71 @@ class ConcreteDecorator : DecoratorBase
 
 
 /*************** Decorator design pattern ***************/
+
+
+/*************** Flyweight design pattern ***************/
+
+
+class FlyweightBase;
+class FlyweightFactory;
+class Tank;
+class Soldier;
+class Target;
+/*
+class Target
+{
+    public:
+        FlyweightBase unitData;
+        
+};*/
+
+class FlyweightBase
+{
+    public:
+        FlyweightBase(){};
+        virtual std::string getName(){return "";};
+        virtual int firePower(){return 1;};
+        virtual void fireAt(std::shared_ptr<Target> target);
+};
+
+class Target
+{   
+    
+    public:
+        std::shared_ptr<FlyweightBase> unitData;
+        Target(std::shared_ptr<FlyweightBase> x) : unitData(x) {};
+        
+};
+
+class FlyweightFactory
+{
+    /*
+    probably better to implement this as a setting/getting type instead of an
+    inheritance type, let the std::map handle the details of the factory
+    instead of having the factory return polymorphic instances, but I'll leave
+    this as is, since this was a good lesson on how to do such a thing. 
+    */
+    std::map<std::string, int> m_flyweights { {"tank", 1}, {"soldier",2}};
+    public:
+        std::shared_ptr<FlyweightBase> getFlyweight(std::string key);
+
+};
+
+class Tank : public FlyweightBase
+{   
+    std::string getName() override;
+    int firePower() override;
+    void fireAt(std::shared_ptr<Target> target) override;
+};
+
+class Soldier : public FlyweightBase
+{
+    std::string getName() override;
+    int firePower() override;
+    void fireAt(std::shared_ptr<Target> target) override;
+};
+
+
+/*************** Flyweight design pattern ***************/
+
+#endif

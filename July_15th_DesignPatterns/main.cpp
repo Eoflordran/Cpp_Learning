@@ -12,6 +12,7 @@ int main()
     //compositeExample();
     //decoratorExample();
     //facadeExample();
+    flyweightExample();
 }
 
 

@@ -18,3 +18,4 @@ void bridgeExample();
 void compositeExample();
 void decoratorExample();
 void facadeExample();
+void flyweightExample();

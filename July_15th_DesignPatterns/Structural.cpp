@@ -145,3 +145,63 @@ void ConcreteDecorator::Operation()
     m_component.Operation();
     std::cout << "modified\n";
 }
+
+/*************** Flyweight example ***************/
+
+
+void FlyweightBase::fireAt(std::shared_ptr<Target> target)
+{
+    
+}
+
+std::shared_ptr<FlyweightBase> FlyweightFactory::getFlyweight(std::string key)
+{
+    std::shared_ptr<FlyweightBase> unit;
+    //std::shared_ptr<Tank> u0 = std::make_shared<Tank>();
+    //std::shared_ptr<Soldier> u1 = std::make_shared<Soldier>();
+    if(m_flyweights.count(key))
+    {
+        switch(m_flyweights[key])
+        {
+            case 1:
+                //std::shared_ptr<Tank> u0 = std::make_shared<Tank>();
+                unit = std::make_shared<Tank>();//u0;// std::static_pointer_cast<FlyweightBase> (u0);
+                break;
+            case 2:
+                //std::shared_ptr<Soldier> u1 = std::make_shared<Soldier>();
+                unit = std::make_shared<Soldier>();//std::static_pointer_cast<FlyweightBase> (u1);
+                break;
+        }
+    }
+    return unit;
+}
+
+std::string Tank::getName()
+{
+    return "Tank";
+}
+
+int Tank::firePower()
+{
+    return 250;
+}
+
+void Tank::fireAt(std::shared_ptr<Target> target)
+{
+    std::cout << "Firing at " << target->unitData->getName() << "With firepower of " << firePower() << std::endl;
+}
+
+std::string Soldier::getName()
+{
+    return "Soldier";
+}
+
+int Soldier::firePower()
+{
+    return 50;
+}
+
+void Soldier::fireAt(std::shared_ptr<Target> target)
+{
+    std::cout << "Firing at " << target->unitData->getName() << "With firepower of " << firePower() << std::endl;
+}

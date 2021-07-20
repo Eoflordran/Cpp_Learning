@@ -100,3 +100,33 @@ void facadeExample()
     ourselves with the bits, and error correction that is going on behind the scenes 
     */
 }
+
+void flyweightExample()
+{
+    std::cout << "hello from the flyweight example\n";
+
+    FlyweightFactory factory;
+    std::shared_ptr<Target> tank1(new Target(factory.getFlyweight("tank")));
+    std::shared_ptr<Target> tank2(new Target(factory.getFlyweight("tank")));
+    std::shared_ptr<Target> soldier1(new Target(factory.getFlyweight("soldier")));
+    std::cout << tank1->unitData->getName() << std::endl;
+
+    tank1->unitData->fireAt(tank2);
+    tank1->unitData->fireAt(soldier1);
+    soldier1->unitData->fireAt(tank1);
+
+    std::cout << (tank1->unitData == tank2->unitData) << std::endl;
+    /*
+    std::cin >> x;
+    switch(x) // switch statements can only take integer arguments unlike C#
+    {
+        case 1: printf("choice is 1\n");
+        break;
+        case 2: printf("choice is 2\n");
+        break;
+        case 3: printf("choice is 3\n");
+        break;
+        default:printf("default case is called\n");
+        break;
+    }*/
+}
