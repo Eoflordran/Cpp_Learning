@@ -145,6 +145,9 @@ void ConcreteDecorator::Operation()
     m_component.Operation();
     std::cout << "modified\n";
 }
+/*************** Decorator example ***************/
+
+
 
 /*************** Flyweight example ***************/
 
@@ -205,3 +208,8 @@ void Soldier::fireAt(std::shared_ptr<Target> target)
 {
     std::cout << "Firing at " << target->unitData->getName() << "With firepower of " << firePower() << std::endl;
 }
+/*************** Flyweight example ***************/
+
+
+/*************** Proxy example ***************/
+
